@@ -1,2 +1,2 @@
 # CodePracticing
-记录看书的日常
+记录刷力扣的日常
