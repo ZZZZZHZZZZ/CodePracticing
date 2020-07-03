@@ -1,2 +1,2 @@
-# Leecode
-记录刷力扣的日常
+# CodePracticing
+记录刷题的日常
