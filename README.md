@@ -1,2 +1,2 @@
 # CodePracticing
-记录刷题的日常
+记录刷题日常
