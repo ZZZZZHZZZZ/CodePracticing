@@ -1,4 +1,5 @@
 //url:https://www.nowcoder.com/practice/9566499a2e1546c0a257e885dfdbf30d?tpId=37&&tqId=21277&rp=1&ru=/ta/huawei&qru=/ta/huawei/question-ranking
+//url:https://www.nowcoder.com/practice/9999764a61484d819056f807d2a91f1e?tpId=37&&tqId=21273&rp=1&ru=/ta/huawei&qru=/ta/huawei/question-ranking
 #include<iostream>
 #include<stack>
 using namespace std;
@@ -77,9 +78,73 @@ int main() {
             operators.pop();
             caclustr = caclustr.substr(1);
         }
+        else if (caclustr[0] == '{') {
+            string temp = string(1, caclustr[0]);
+            operators.push(temp);
+            caclustr = caclustr.substr(1);
+            if (caclustr[0] == '-') {
+                caclustr = '0' + caclustr;
+            }
+        }
+        else if (caclustr[0] == '}') {
+            while (operators.top() != "{") {
+                string oper = operators.top();
+                operators.pop();
+                int num2 = numbers.top();
+                numbers.pop();
+                int num1 = numbers.top();
+                numbers.pop();
+                if (oper == "+") {
+                    numbers.push(num1 + num2);
+                }
+                else if (oper == "-") {
+                    numbers.push(num1 - num2);
+                }
+                if (oper == "*") {
+                    numbers.push(num1 * num2);
+                }
+                else if (oper == "/") {
+                    numbers.push(num1 / num2);
+                }
+            }
+            operators.pop();
+            caclustr = caclustr.substr(1);
+        }
+        else if (caclustr[0] == '[') {
+            string temp = string(1, caclustr[0]);
+            operators.push(temp);
+            caclustr = caclustr.substr(1);
+            if (caclustr[0] == '-') {
+                caclustr = '0' + caclustr;
+            }
+        }
+        else if (caclustr[0] == ']') {
+            while (operators.top() != "[") {
+                string oper = operators.top();
+                operators.pop();
+                int num2 = numbers.top();
+                numbers.pop();
+                int num1 = numbers.top();
+                numbers.pop();
+                if (oper == "+") {
+                    numbers.push(num1 + num2);
+                }
+                else if (oper == "-") {
+                    numbers.push(num1 - num2);
+                }
+                if (oper == "*") {
+                    numbers.push(num1 * num2);
+                }
+                else if (oper == "/") {
+                    numbers.push(num1 / num2);
+                }
+            }
+            operators.pop();
+            caclustr = caclustr.substr(1);
+        }
         else {
             num = num * 10 + (caclustr[0] - '0');
-            if (caclustr[1] != '+' && caclustr[1] != '-' && caclustr[1] != '*' && caclustr[1] != '/' && caclustr[1] != '(' && caclustr[1] != ')') {
+            if (caclustr[1] != '+' && caclustr[1] != '-' && caclustr[1] != '*' && caclustr[1] != '/' && caclustr[1] != '(' && caclustr[1] != ')' && caclustr[1] != '{' && caclustr[1] != '}' && caclustr[1] != '[' && caclustr[1] != ']') {
             }
             else {
                 numbers.push(num);
@@ -90,7 +155,7 @@ int main() {
         if (caclustr == "") {
             break;
         }
-        if (caclustr.find('+') == caclustr.npos&& caclustr.find('-') == caclustr.npos&& caclustr.find('*') == caclustr.npos&& caclustr.find('/') == caclustr.npos&& caclustr.find('(') == caclustr.npos&& caclustr.find(')') == caclustr.npos) {
+        if (caclustr.find('+') == caclustr.npos&& caclustr.find('-') == caclustr.npos&& caclustr.find('*') == caclustr.npos&& caclustr.find('/') == caclustr.npos&& caclustr.find('(') == caclustr.npos&& caclustr.find(')') == caclustr.npos && caclustr.find('{') == caclustr.npos && caclustr.find('}') == caclustr.npos && caclustr.find('[') == caclustr.npos && caclustr.find(']') == caclustr.npos) {
             break;
         }
     }
