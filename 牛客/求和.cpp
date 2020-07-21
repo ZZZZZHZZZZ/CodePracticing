@@ -1,3 +1,4 @@
+//url:https://ac.nowcoder.com/acm/problem/16492
 //解法：
 //要求y - x = z - y, 且x, z节点颜色相同, 则是要求x, z节点同一奇偶性，同一颜色
 //使用struct保存当前节点的序号，数字，颜色，序号奇偶性
