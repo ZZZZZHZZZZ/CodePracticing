@@ -1,0 +1,38 @@
+//url::https://leetcode-cn.com/problems/word-search/
+
+
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+    int hensize = board.size();
+    int shusize = board[0].size();
+    vector<vector<int>> visited(board.size(), vector<int>(board[0].size(), 0));
+    for (int i = 0; i < hensize; ++i) {
+        for (auto j = 0; j < shusize; ++j) {
+            if (dfs(board, visited, word, 0, i, j)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+bool dfs(vector<vector<char>>& board, vector<vector<int>>& visited, const string& target, int i, int hen, int shu) {
+    if (i == target.size()) {
+        return true;
+    }
+    if (i > target.size() || hen < 0 || shu < 0 || hen >= board.size() || shu >= board[0].size()|| visited[hen][shu] == 1) {
+        return false;
+    }
+    if (board[hen][shu] == target[i]) {
+        visited[hen][shu] = 1;
+        if (dfs(board, visited, target, i + 1, hen + 1, shu) ||
+            dfs(board, visited, target, i + 1, hen - 1, shu) ||
+            dfs(board, visited, target, i + 1, hen, shu + 1) ||
+            dfs(board, visited, target, i + 1, hen, shu - 1)) {
+            return true;
+        }
+        visited[hen][shu] = 0;
+    }
+    return false;
+}
+};
