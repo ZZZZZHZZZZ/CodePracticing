@@ -1,3 +1,6 @@
+url::https://leetcode-cn.com/problems/smallest-k-lcci/
+
+
 class Solution {
 public:
     vector<int> smallestK(vector<int>& arr, int k) {
